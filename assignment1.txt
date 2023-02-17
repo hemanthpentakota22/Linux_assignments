@@ -1,11 +1,18 @@
 "Linux Assignment 01:
 Linux command to get duplicate word count in a file. Write the output to new file."
 
-Command:
-sort names.txt | uniq -c -d > demo.txt 
+Commands:
+
+1.sort names.txt | uniq -c -d > demo.txt 
 
 DESCRIPTION:
 I have used piping method(Piping : It executes from left to right i.e the most left commands output is taken as input to the next command) for getting 
 the duplicate count where I have first sorted the text present in the file using sort(sort: It is used to sort the data present in the file) and giving 
 the sample output to uniq command to count the words by specifying the -c and then used -d to fetch only the duplicate names and then redirecting the 
 output to a new file.
+
+
+2.awk '{for(i=1;i<=NF;i++) n[$i]++} END {for(k in n) if(n[k]>1) print k,n[k]}' names.txt > demo.txt
+
+DESCRIPTION:-
+awk:- It allows a programmer to write a small efficient programs in the form of statement as mentioned in the above command.I have used a for loop to go through the words in a file and default given range till NF where it is a predefined variable and takes the number of words present in the file and appending the words into an array and then used an END statement which executes only at the end of all the satements and here in END statement I have used a for loop to go through the array n(now the array n contains all the words in the text file), k referes to each word and n[k] referes to the number of times the word has been repeated so as you sad to fetch only duplicate words, I used an if statement after the for loop where it prints the duplicates. Finally redirecting the comands output into a demo.txt file
