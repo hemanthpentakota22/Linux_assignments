@@ -1,0 +1,23 @@
+"Linux Assignment 02: (16th Feb) 
+Linux command to Swap the column (3<=> 2) of a fileAfter swapping if it has duplicated rows, then remove itPlace the counts of line before and after 
+conversion in the footer of output fileSave it in a new file Demo2.txtThe output file should contain (let assume the column swapped)
+Demo2.txt
+----------------------------
+1        2          3
+xxxx  97497   delivery
+....
+Total no lines before: 202
+Total no lines after: 196
+-----------------------------
+"
+
+Commands :
+
+1.awk '{ t=$2 ; $2=$3; $3=t; print}' names.txt | sort |tee demo1.txt|awk 'END{print "Total no lines before: " NR}' |
+  tee demo2.txt | uniq demo1.txt|tee demo1.txt| awk 'END{print "Total no lines before: " NR}' >> demo2.txt | cat demo1.txt demo2.txt > demo3.txt
+
+2.awk '{ t=$2 ; $2=$3; $3=t; print}' names.txt | sort |tee demo2.txt|awk 'END{print "Total no lines before: " NR}' | 
+  tee demo1.txt |uniq demo2.txt|tee demo2.txt| awk 'END{print "Total no lines before: " NR}' >> demo1.txt | cat demo1.txt >> demo2.txt
+
+3.awk '{ t=$2 ; $2=$3; $3=t; print}' names.txt | sort |tee demo2.txt|awk 'END{print "Total no lines before: " NR}' | 
+  tee demo1.txt |uniq demo2.txt|tee demo2.txt| awk 'END{print "Total no lines before: " NR}' >> demo1.txt | paste demo1.txt >> demo2.txt
