@@ -1,0 +1,15 @@
+"
+Linux Assignment 03: (17th Feb)
+
+Linux command toPrint the lines having greater than 30 char in File1.txt
+Remove the lines having greater than 30 char and store it in File2.txt
+Check and Remove the Dot (.) or EndPeriod if it is in the end of the line and store it in File3.txt 
+"
+
+Command:
+
+1.awk 'length($0) > 30' names.txt | tee file1.txt | awk 'length($0) < 30' names.txt |tee file2.txt | 
+  awk '{if(substr($0, length($0))=="." || substr($0, length($0))==" "){ print substr($0, 1,length($0)-1)} else {print}}' names.txt > file3.txt
+2.grep '.\{30\}' names.txt | tee file1.txt | awk 'length($0) < 30' names.txt |tee file2.txt | 
+  awk '{if(substr($0, length($0))=="." || substr($0, length($0))==" "){ print substr($0, 1,length($0)-1)} else {print}}' names.txt > file3.txt
+  
