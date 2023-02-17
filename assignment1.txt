@@ -1,0 +1,11 @@
+"Linux Assignment 01:
+Linux command to get duplicate word count in a file. Write the output to new file."
+
+Command:
+sort names.txt | uniq -c -d > demo.txt 
+
+DESCRIPTION:
+I have used piping method(Piping : It executes from left to right i.e the most left commands output is taken as input to the next command) for getting 
+the duplicate count where I have first sorted the text present in the file using sort(sort: It is used to sort the data present in the file) and giving 
+the sample output to uniq command to count the words by specifying the -c and then used -d to fetch only the duplicate names and then redirecting the 
+output to a new file.
